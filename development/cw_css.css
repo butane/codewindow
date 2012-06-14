@@ -1,0 +1,78 @@
+/* 
+**************************
+*  Code Window - PHP     *
+*  Author - Vivek Dinesh *
+*  Version : 1.0         *
+**************************
+*/
+/*
+   Copyright 2012 Vivek Dinesh
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+*/
+
+/* Main Wrapper */
+.cw_php {
+overflow:auto;
+}
+
+/* Table */
+.cw_table {
+background-color:#FFFFFF;
+border:1px solid #EFEFEF;
+}
+.cw_tr_odd {
+background-color:#FFFFFF;
+}
+.cw_tr_even {
+background-color:#EFEFEF;
+}
+.cw_td_line {
+border-right:3px solid #00FF00;
+padding-right:5px;
+text-align:right;
+font-weight:bold;
+cursor:pointer;
+}
+.cw_td_code {
+font-size:14px;
+}
+
+/* Code Elements */
+.cw_comment {
+color:#FFCC00;
+}
+.cw_keywords {
+color:#00FF00;
+}
+.cw_functions {
+color:#00FFFF;
+}
+.cw_variables {
+color:#000099;
+}
+.cw_constants {
+color:#000000;
+font-weight:bold;
+}
+.cw_squotes {
+color:#FF0066;
+}
+.cw_dquotes {
+color:#FF0000;
+}
+.cw_php_tags {
+color:#000000;
+font-weight:bold;
+}
