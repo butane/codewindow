@@ -46,6 +46,46 @@ var cw_basic = {
 	"frameCode"	:	function(className, data) {
 						return '<code class=\"' + className + '\">' + data + '</code>';
 	},
+	"activeBrackets" : 	{
+			"active" : function(start_id, end_id) {
+								cw_basic.byId(start_id).style.backgroundColor = "#FF6666";
+								cw_basic.byId(end_id).style.backgroundColor = "#FF6666";
+			},
+			"passive" : function(start_id, end_id) {
+								setTimeout(function () {
+									cw_basic.byId(start_id).style.backgroundColor = "inherit";
+									cw_basic.byId(end_id).style.backgroundColor = "inherit";
+								}, 50);
+			},
+			"frame" : function(start_id, end_id, cur_id, brk) {
+								var str = '<span ';
+								str += 'onmouseover=\"cw_basic.activeBrackets.active(\''+start_id+'\',\''+end_id+'\')\" ';
+								str += 'onmouseout=\"cw_basic.activeBrackets.passive(\''+start_id+'\',\''+end_id+'\')\"';
+								str += '  id=\"'+cur_id+'\">'+brk+'</span>';
+								return str;
+			},
+			"activate" : function(data, prefix) {
+							var count=1, output='';
+							var stack = new Array();
+							for(var i=0;i<data.length;i++) {
+								if(data[i]=='(' || data[i]=='[' || data[i]=='{') {
+									start_id = 'cw_' + prefix + '_bracket_' + count + '_start';
+									end_id = 'cw_' + prefix + '_bracket_' + count + '_end';
+									output += cw_basic.activeBrackets.frame(start_id, end_id, start_id, data[i]);
+									stack.push(count);
+									count++;
+								} else if(data[i]==')' || data[i]==']' || data[i]=='}') {
+									var temp = stack.pop();
+									start_id = 'cw_' + prefix + '_bracket_' + temp + '_start';
+									end_id = 'cw_' + prefix + '_bracket_' + temp + '_end';
+									output += cw_basic.activeBrackets.frame(start_id, end_id, end_id, data[i]);
+								} else {
+									output += data[i];
+								}
+							}
+							return output;
+			}
+	},
 	"tableIt"	:	function(data) {
 						var i, line=1, temp='', table = '<table class=\"cw_table\">';
 						for(i=0;i<data.length;i++) {
@@ -133,6 +173,7 @@ var cw_php = {
 							if(php[i].className=='cw_php') {
 								var data = php[i].innerHTML;
 								data = cw_php.colorIt(data);
+								data = cw_basic.activeBrackets.activate(data, i);
 								data = cw_basic.tableIt(data);
 								php[i].innerHTML = data;
 							}
