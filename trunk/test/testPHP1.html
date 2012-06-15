@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Code Window - Test PHP 1</title>
+<link rel="stylesheet" type="text/css" href="http://codewindow.googlecode.com/svn/trunk/development/cw_css.css">
+<script type="text/javascript" src="http://codewindow.googlecode.com/svn/trunk/development/cw_php.js"></script>
+</head>
+<body>
+<pre class="cw_php">
+&lt;?php
+class Student {
+  private $name, $age;
+	
+  public function __construct ($name, $age) {
+      $this->name = $name;
+      $this->age = $age;
+  }
+    
+  public function getDetails() {
+      return(array("name"=>$name, "age"=>$age));
+	}
+}
+
+$abc = new Student("Vivek", 22);
+
+$details = $abc->getDetails();
+
+echo('Name : '.$details['name']);
+echo('Age : '.$details['age']);
+?&gt;
+</pre>
+</body>
+</html>
