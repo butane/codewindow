@@ -188,7 +188,7 @@ var cw_php = {
 								output += cw_php.processBasic(buffer);
 								buffer = '';
 								if(data[i]=='/' && data[i+1]=='*') {
-									while(!(data[i]=='*' && data[i+1]=='/') || (i<data.length)) {
+									while(!(data[i]=='*' && data[i+1]=='/') && (i<data.length)) {
 										if(data[i]=='\n') {
 											output += cw_basic.frameCode(cw_php.class.comment, buffer);
 											output += data[i];
