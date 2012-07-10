@@ -195,8 +195,11 @@ var cw_php = {
 											i++;
 											buffer = '';
 										}
-										if(i<data.length) buffer += data[i];
-										i++;
+										if(data[i]!='\n' && !(data[i]=='*' && data[i+1]=='/')) {
+											buffer += data[i];
+											i++;
+										}
+										if(i>data.length) break;
 									}
 									buffer += data[i];
 									i++;
