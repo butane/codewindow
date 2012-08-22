@@ -137,6 +137,7 @@ var cw_php = {
 	},
 	"isConstant":	function(data) {
 						var i;
+            if(data == '') return false;
 						if(!isNaN(data)) return true;
 						for(i=0;i<cw_php.constants.length;i++)
 							if(cw_php.constants[i]==data)
