@@ -1,0 +1,1 @@
+Code Window includes a set of tools based on JavaScript that allows you to display your code on web pages with proper syntax highlighting and features to make code review easier.
